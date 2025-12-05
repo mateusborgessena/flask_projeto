@@ -1,4 +1,4 @@
-class  aluno:
+class  Aluno:
     def __init__(self, id, nome, matricula):
         self.id = id
         self.nome = nome
