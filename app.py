@@ -5,6 +5,7 @@ from professor_service import ProfessorService
 app = Flask(__name__)
 
 aluno_service = AlunoService()
+professor_service = ProfessorService()
 
 @app.route('/')
 def index():
