@@ -1,31 +1,28 @@
 {% include 'cabecalho.html' %}
 
 
-<h1>Lista de Alunos</h1>
+<h1>Lista de Cursos</h1>
 
 
 <table class="table table-bordered table-striped">
     <thead class="table-dark">
         <tr>
             <th>ID</th>
-            <th>Matrícula</th>
+            <th>Nivel</th>
             <th>Nome</th>
         </tr>
     </thead>
 
 
     <tbody>
-        {% for aluno in lista %}
+        {% for curso in lista %}
         <tr>
-            <td>{{ aluno.id }}</td>
-            <td>{{ aluno.matricula }}</td>
-            <td>{{ aluno.nome }}</td>
+            <td>{{ medio.nivel }}</td>
+            <td>{{ superior.nivel }}</td>
         </tr>
         {% endfor %}
     </tbody>
 </table>
-
-
 
 
 
