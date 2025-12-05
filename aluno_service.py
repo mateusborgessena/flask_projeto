@@ -16,7 +16,8 @@ class AlunoService:
         self.adicionar("Ana Costa", "2023003")
 
     def adicionar(self, nome, matricula):
-        novo_aluno = Aluno(self.proximo_id, nome, matricula)
+        id = self.proximo_id
+        novo_aluno = Aluno(id, nome, matricula)
         self.lista.append(novo_aluno)
         self.proximo_id += 1
 
