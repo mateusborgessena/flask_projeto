@@ -1,5 +1,5 @@
 from flask import Flask, render_template
-from alunos_service import AlunoService
+from aluno_service import AlunoService
 from professor_service import ProfessorService
 
 app = Flask(__name__)
