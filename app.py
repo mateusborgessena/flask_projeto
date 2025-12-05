@@ -20,13 +20,13 @@ def contato():
 
 @app.route('/aluno')
 def listar_aluno():
-    listar = aluno_service.listar()
+    lista = aluno_service.listar()
     return render_template('aluno/listar.html', lista=lista)
 
 @app.route('/professor')
 def listar_professor():
-    listar = professor_service.listar()
-    return render_template('professor/listar.html', lista=lista)
+    lista = professor_service.listar()
+    return render_template('professor', lista=lista)
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=80,debug=True)
