@@ -26,7 +26,7 @@ def listar_aluno():
 @app.route('/professor')
 def listar_professor():
     lista = professor_service.listar()
-    return render_template('professor', lista=lista)
+    return render_template('professor/listar.html', lista=lista)
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=80,debug=True)
