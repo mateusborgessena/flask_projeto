@@ -21,6 +21,10 @@ def sobre():
 def contato():
     return render_template('contato.html')
 
+@app.route('/inicio')
+def inicio():
+    return render_template('inicio.html')
+
 @app.route('/aluno')
 def listar_aluno():
     lista = aluno_service.listar()
