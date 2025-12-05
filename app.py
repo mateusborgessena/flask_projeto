@@ -1,11 +1,13 @@
 from flask import Flask, render_template
 from aluno_service import AlunoService
 from professor_service import ProfessorService
+from curso_service import CursoService
 
 app = Flask(__name__)
 
 aluno_service = AlunoService()
 professor_service = ProfessorService()
+curso_service = CursoService()
 
 @app.route('/')
 def index():
@@ -28,6 +30,11 @@ def listar_aluno():
 def listar_professor():
     lista = professor_service.listar()
     return render_template('professor/listar.html', lista=lista)
+
+@app.route('/curso')
+def listar_curso():
+    lista = curso_service.listar()
+    return render_template('curso/listar.html', lista=lista)
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=80,debug=True)
