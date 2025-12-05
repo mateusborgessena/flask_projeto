@@ -17,8 +17,10 @@
     <tbody>
         {% for curso in lista %}
         <tr>
-            <td>{{ medio.nivel }}</td>
-            <td>{{ superior.nivel }}</td>
+            <td>{{ curso.id }}</td>
+            <td>{{ curso.nivel }}</td>
+            <td>{{ curso.nome }}</td>
+
         </tr>
         {% endfor %}
     </tbody>
