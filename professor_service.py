@@ -1,8 +1,9 @@
 class  Professor:
-    def __init__(self, id, nome, matricula):
+    def __init__(self, id, nome, cpf, disciplina):
         self.id = id
         self.nome = nome
-        self.matricula = matricula
+        self.cpf = cpf
+        self.disciplina = disciplina
 
 class ProfessorService:
     def __init__(self):
@@ -13,9 +14,9 @@ class ProfessorService:
         self.adicionar("Jorge Batista", "2029510")
         self.adicionar("Maria Costa", "2023141")
 
-    def adicionar(self, nome, matricula):
+    def adicionar(self, nome, cpf, disciplina):
         id = self.proximo_id
-        novo_professor = Professor(id, nome, matricula)
+        novo_professor = Professor(id, nome, cpf, disciplina)
         self.lista.append(novo_professor)
         self.proximo_id += 1
 
