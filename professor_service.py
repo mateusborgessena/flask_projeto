@@ -10,9 +10,9 @@ class ProfessorService:
         self.lista = []
         self.proximo_id = 1
 
-        self.adicionar("Ana Braga", "2025137")
-        self.adicionar("Jorge Batista", "2029510")
-        self.adicionar("Maria Costa", "2023141")
+        self.adicionar("Ana Braga", "2025137", "Historia")
+        self.adicionar("Jorge Batista", "2029510", "Portugues")
+        self.adicionar("Maria Costa", "2023141", "Matematica")
 
     def adicionar(self, nome, cpf, disciplina):
         id = self.proximo_id
