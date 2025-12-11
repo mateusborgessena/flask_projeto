@@ -34,17 +34,44 @@ def listar_aluno():
 def novo_aluno():
     return render_template("aluno/form.html", aluno=None)
 
-@app.route('/aluno/salvar', methods=["POST"])
-           
+@app.route("/aluno/salvar/", methods=["POST"])
+def salvar_aluno():
+    nome = request.form.get("nome")
+    matricula = request.form.get("matricula")
+    aluno_service.adicionar(nome, matricula)
+    return redirect('/aluno')
+      
 @app.route('/professor')
 def listar_professor():
     lista = professor_service.listar()
     return render_template('professor/listar.html', lista=lista)
 
+@app.route('/professor/form')
+def novo_professor():
+    return render_template("professor/form.html", professor=None)
+
+@app.route("/professor/salvar/", methods=["POST"])
+def salvar_professor():
+    nome = request.form.get("nome")
+    matricula = request.form.get("matricula")
+    professor_service.adicionar(nome, matricula)
+    return redirect('/professor')
+
 @app.route('/curso')
 def listar_curso():
     lista = curso_service.listar()
     return render_template('curso/listar.html', lista=lista)
+
+@app.route('/curso/form')
+def novo_curso():
+    return render_template("curso/form.html", curso=None)
+
+@app.route("/curso/salvar/", methods=["POST"])
+def salvar_curso():
+    nome = request.form.get("nome")
+    matricula = request.form.get("matricula")
+    curso_service.adicionar(nome, matricula)
+    return redirect('/curso')
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=80,debug=True)
