@@ -30,6 +30,12 @@ def listar_aluno():
     lista = aluno_service.listar()
     return render_template('aluno/listar.html', lista=lista)
 
+@app.route('/aluno/form')
+def novo_aluno():
+    return render_template("aluno/form.html", aluno=None)
+
+@app.route('/aluno/salvar', methods=["POST"])
+           
 @app.route('/professor')
 def listar_professor():
     lista = professor_service.listar()
