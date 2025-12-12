@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect
 from aluno_service import AlunoService
 from professor_service import ProfessorService
 from curso_service import CursoService
