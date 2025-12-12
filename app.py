@@ -53,8 +53,10 @@ def novo_professor():
 @app.route("/professor/salvar/", methods=["POST"])
 def salvar_professor():
     nome = request.form.get("nome")
-    matricula = request.form.get("matricula")
-    professor_service.adicionar(nome, matricula)
+    cpf = request.form.get("cpf")
+    disciplina = request.form.get("disciplina")
+
+    professor_service.adicionar(nome, cpf, disciplina)
     return redirect('/professor')
 
 @app.route('/curso')
@@ -68,9 +70,9 @@ def novo_curso():
 
 @app.route("/curso/salvar/", methods=["POST"])
 def salvar_curso():
-    nome = request.form.get("nome")
-    matricula = request.form.get("matricula")
-    curso_service.adicionar(nome, matricula)
+    nivel = request.form.get("nivel")
+    curso = request.form.get("curso")
+    curso_service.adicionar(curso, nivel)
     return redirect('/curso')
 
 if __name__ == '__main__':
