@@ -23,3 +23,17 @@ class AlunoService:
 
     def listar(self):
         return self.lista
+    
+    def buscar_por_id(self, id):
+        for aluno in self.lista:
+            if aluno.id == id:   
+                return aluno    
+        return None 
+    
+    def atualizar (self, id, nome, matricula):
+        aluno = self.buscar_por_id(id)
+        if aluno:
+            aluno.nome = nome
+            aluno.matricula = matricula
+        
+

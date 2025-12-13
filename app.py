@@ -40,7 +40,20 @@ def salvar_aluno():
     matricula = request.form.get("matricula")
     aluno_service.adicionar(nome, matricula)
     return redirect('/aluno')
-      
+
+@app.route("/aluno/editar/<int:id>")
+def editar_aluno(id):
+    aluno = aluno_service.buscar_por_id(id)
+    return render_template("aluno/form.html", aluno=aluno)
+
+@app.route("/aluno/salvar/<int:id>", methods=["POST"])
+def atualizar_aluno(id):
+    nome = request.form["nome"]
+    matricula = request.form["matricula"]
+    aluno_service.atualizar(id, nome, matricula)
+    return redirect('/aluno')
+
+
 @app.route('/professor')
 def listar_professor():
     lista = professor_service.listar()
