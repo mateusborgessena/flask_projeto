@@ -72,9 +72,26 @@ def salvar_professor():
     nome = request.form.get("nome")
     cpf = request.form.get("cpf")
     disciplina = request.form.get("disciplina")
-
     professor_service.adicionar(nome, cpf, disciplina)
     return redirect('/professor')
+
+@app.route("/professor/editar/<int:id>")
+def editar_professor(id):
+    professor = professor_service.buscar_por_id(id)
+    return render_template("professor/form.html", professor=professor)
+
+@app.route("/professor/salvar/<int:id>", methods=["POST"])
+def atualizar_professor(id):
+    nome = request.form["nome"]
+    cpf = request.form["cpf"]
+    disciplina = request.form["disciplina"]
+    aluno_service.atualizar(id, nome, cpf, disciplina)
+    return redirect('/professor')
+
+@app.route("/professor/remover/<int:id>")
+def remover_professor(id):
+    professor = professor_service.buscar_por_id(id)
+    return render_template("professor/form.html", professor=professor)
 
 @app.route('/curso')
 def listar_curso():
@@ -91,6 +108,23 @@ def salvar_curso():
     curso = request.form.get("curso")
     curso_service.adicionar(curso, nivel)
     return redirect('/curso')
+
+@app.route("/curso/editar/<int:id>")
+def editar_curso(id):
+    curso = curso_service.buscar_por_id(id)
+    return render_template("curso/form.html", curso=curso)
+
+@app.route("/curso/salvar/<int:id>", methods=["POST"])
+def atualizar_curso(id):
+    nivel = request.form["nivel"]
+    curso = request.form["curso"]
+    curso_service.atualizar(id, nivel, curso)
+    return redirect('/curso')
+
+@app.route("/curso/remover/<int:id>")
+def remover_curso(id):
+    curso = curso_service.buscar_por_id(id)
+    return render_template("curso/form.html", curso=curso)
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=80,debug=True)

@@ -11,6 +11,7 @@
             <th>ID</th>
             <th>Nivel</th>
             <th>Nome</th>
+            <th>Ações</th>
         </tr>
     </thead>
 
@@ -21,6 +22,10 @@
             <td>{{ curso.id }}</td>
             <td>{{ curso.nivel }}</td>
             <td>{{ curso.nome }}</td>
+            <td>
+                <a href="/curso/form" class="btn btn-primary mb-3">Alterar</a>
+                <a href="/curso/form" class="btn btn-primary mb-3">Remover</a>
+            </td>
 
         </tr>
         {% endfor %}
