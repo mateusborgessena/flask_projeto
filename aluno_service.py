@@ -10,11 +10,6 @@ class AlunoService:
         self.lista = []
         self.proximo_id = 1
 
-
-        self.adicionar("Maria Silva", "2023801")
-        self.adicionar("João Pereira", "2023802")
-        self.adicionar("Ana Costa", "2023003")
-
     def adicionar(self, nome, matricula):
         id = self.proximo_id
         novo_aluno = Aluno(id, nome, matricula)
@@ -35,5 +30,13 @@ class AlunoService:
         if aluno:
             aluno.nome = nome
             aluno.matricula = matricula
+
+    def remover (self, id, nome, matricula):
+        aluno = self.buscar_por_id(id)
+        if aluno:
+            aluno.nome = nome
+            aluno.matricula = matricula
+    
+
         
 
