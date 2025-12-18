@@ -2,12 +2,14 @@ from flask import Flask, render_template, request, redirect
 from aluno_service import AlunoService
 from professor_service import ProfessorService
 from curso_service import CursoService
+from disciplina_service import DisciplinaService
 
 app = Flask(__name__)
 
 aluno_service = AlunoService()
 professor_service = ProfessorService()
 curso_service = CursoService()
+disciplina_service = Disciplina_service()
 
 @app.route('/')
 def index():
@@ -125,6 +127,40 @@ def atualizar_curso(id):
 def remover_curso(id):
     curso_service.remover(id)
     return render_template("/curso")
+
+@app.route('/disciplina')
+def listar_disciplina():
+    lista = disciplina_service.listar()
+    return render_template('disciplina/listar.html', lista=lista)
+
+@app.route('/disciplina/form')
+def nova_disciplina():
+    return render_template("disciplina/form.html", disciplina=None)
+
+@app.route("/disciplina/salvar/", methods=["POST"])
+def salvar_disciplina():
+    nome = request.form.get("nome")
+    carga_horaria = request.form.get("carga_horaria")
+    ementa = request.form.get("ementa")
+    curso_service.adicionar(nome,carga_horaria, ementa)
+    return redirect('/disciplina')
+
+@app.route("/disciplina/editar/<int:id>")
+def editar_disciplina(id):
+    disciplina.editar(id)
+    return redirect("/disciplina")
+
+@app.route("/disciplina/salvar/<int:id>", methods=["POST"])
+def atualizar_disciplina(id):
+    nome = request.form["nome"]
+    carga_horaria = request.form["carga_horaria"]
+    curso_service.atualizar(id, nome, carga_horaria, ementa)
+    return redirect('/disciplina')
+
+@app.route("/disciplina/remover/<int:id>")
+def remover_disciplina(id):
+    disciplina_service.remover(id)
+    return render_template("/disciplina")
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=80,debug=True)
