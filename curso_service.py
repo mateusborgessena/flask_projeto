@@ -34,8 +34,8 @@ class CursoService:
             curso.curso = curso
             curso.matricula = nivel
 
-    def remover (self, id, curso, nivel):
-        curso = self.buscar_por_id(id)
-        if curso:
-            curso.curso = curso
-            curso.nivel = nivel
+    def remover (self, id):
+        for curso in self.lista:
+            if curso.id == id:
+                self.lista.remove(curso)
+                break

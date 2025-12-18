@@ -36,9 +36,8 @@ class ProfessorService:
             professor.disciplina = disciplina
             professor.cpf = cpf
 
-    def remover (self, id, nome, cpf, disciplina):
-        professor = self.buscar_por_id(id)
-        if professor:
-            professor.nome = nome
-            professor.disciplina = disciplina
-            professor.cpf = cpf
+    def remover (self, id):
+        for professor in self.lista:
+            if professor.id == id:
+                self.lista.remove(professor)
+                break
