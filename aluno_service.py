@@ -31,11 +31,12 @@ class AlunoService:
             aluno.nome = nome
             aluno.matricula = matricula
 
-    def remover (self, id, nome, matricula):
-        aluno = self.buscar_por_id(id)
-        if aluno:
-            aluno.nome = nome
-            aluno.matricula = matricula
+    def remover (self, id):
+        for aluno in self.lista:
+            if aluno.id == id:
+                self.lista.remove(aluno)
+                break
+            
     
 
         

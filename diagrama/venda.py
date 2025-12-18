@@ -1,48 +1,50 @@
 class Aluno:
-    def __init__(self, nome , cpf ):
+    def __init__(self, nome, matricula):
         self.nome = nome
-        self.cpf = cpf
+        self.matricula = matricula
+
+
 class Disciplina:
-    def __init__(self, nome , valor ):
+    def __init__(self, nome, nota):
         self.nome = nome
-        self.valor = valor
+        self.nota = nota
+
 class Historico:
-    def __init__(self, cliente , data_Aluno ):
-        self.Aluno = cliente
-        self.data_Aluno = data_Aluno
-        self.itens = []
-def adicionar_item(self, Disciplina):
-    self.itens.append(Disciplina)
-    print(f"Disciplina'{Disciplina.nome}'adicionado ao curricolo.")
+    def __init__(self, aluno):
+        self.aluno = aluno
+        self.disciplinas = []
 
-def calcular_total(self):
-    total = 0
-    for produto in self.itens:
-        total += produto.itens
-    return total
+    def adicionar_disciplina(self, disciplina):
+        self.disciplinas.append(disciplina)
 
-def resumo(self):
-    print("\n--- RESUMO DA VENDA ---")
-    print(f"Cliente: {self.cliente.nome}")
-    print(f"CPF: {self.cliente.cpf}")
-    print(f"Data da venda: {self.data_venda}")
-    print("Itens:")
-    for p in self.itens:
-        print(f"- {p.nome} | R$ {p.valor:.2f}")
-    print(f"Total de itens: {len(self.itens)}")
-    print(f"Valor total: R$ {self.calcular_total():.2f}")
+    def calcular_media(self):
+        if not self.disciplinas:
+            return 0
+        soma = sum(d.nota for d in self.disciplinas)
+        return soma / len(self.disciplinas)
 
-   
-cliente1 = Cliente("João da Silva", "123.456.789-00")
+    def resumo(self):
+        print("\n--- HISTÓRICO ESCOLAR ---")
+        print(f"Aluno: {self.aluno.nome}")
+        print(f"Matrícula: {self.aluno.matricula}")
+        print("Disciplinas:")
+        for d in self.disciplinas:
+            print(f"- {d.nome} | Nota: {d.nota}")
 
-venda = Venda(cliente1, "03/12/2025")
+        media = self.calcular_media()
+        print(f"Média do período: {media:.2f}")
 
-produto1 = Produto("Arroz", 7.50)
-produto2 = Produto("Detergente", 2.30)
-produto3 = Produto("Fita adesiva", 4.20)
 
-venda.adicionar_item(produto1)
-venda.adicionar_item(produto2)
-venda.adicionar_item(produto3)
+aluno1 = Aluno("João da Silva", "20231234")
 
-venda.resumo()
+historico = Historico(aluno1)
+
+disciplina1 = Disciplina("Matemática", 8.0)
+disciplina2 = Disciplina("Português", 7.5)
+
+historico.adicionar_disciplina(disciplina1)
+historico.adicionar_disciplina(disciplina2)
+
+historico.resumo()
+
+

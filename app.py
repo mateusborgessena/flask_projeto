@@ -55,8 +55,8 @@ def atualizar_aluno(id):
 
 @app.route("/aluno/remover/<int:id>")
 def remover_aluno(id):
-    aluno = aluno_service.buscar_por_id(id)
-    return render_template("aluno/form.html", aluno=aluno)
+    aluno_service.remover(id)
+    return redirect("aluno/")
 
 @app.route('/professor')
 def listar_professor():

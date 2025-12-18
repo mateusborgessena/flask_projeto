@@ -1,0 +1,21 @@
+classDiagram
+    class Aluno {
+        +String nome
+        +String matricula
+    }
+
+    class Disciplina {
+        +String nome
+        +float nota
+    }
+
+    class Historico {
+        -List~Disciplina~ disciplinas
+        -Aluno aluno
+        +adicionarDisciplina(d: Disciplina)
+        +calcularMedia(): float
+        +resumo()
+    }
+
+    Aluno "1" --> "1" Historico
+    Historico "1" *-- "*" Disciplina
