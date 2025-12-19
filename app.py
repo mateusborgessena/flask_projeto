@@ -9,7 +9,7 @@ app = Flask(__name__)
 aluno_service = AlunoService()
 professor_service = ProfessorService()
 curso_service = CursoService()
-Disciplina_service = Disciplina_service()
+Disciplina_service = disciplina_service()
 
 @app.route('/')
 def index():
