@@ -129,7 +129,7 @@ def atualizar_curso(id):
 @app.route("/curso/remover/<int:id>")
 def remover_curso(id):
     curso_service.remover(id)
-    return render_template("/curso")
+    return redirect ("/curso")
 
 @app.route('/disciplina')
 def listar_disciplina():
