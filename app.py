@@ -101,7 +101,7 @@ def remover_professor(id):
 @app.route('/curso')
 def listar_cursos():
     lista = curso_service.listar()
-    return render_template('curso.html', cursos=lcursos)
+    return render_template('curso.html', cursos=cursos)
 
 @app.route('/curso/form')
 def novo_curso():
