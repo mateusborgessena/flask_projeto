@@ -153,12 +153,15 @@ def editar_disciplina(id):
     disciplina_service.editar(id)
     return redirect("/disciplina")
 
-@app.route("/disciplina/salvar/<int:id>", methods=["POST"])
-def atualizar_disciplina(id):
-    nome = request.form["nome"]
-    carga_horaria = request.form["carga_horaria"]
-    curso_service.atualizar(id, nome, carga_horaria, ementa)
-    return redirect('/disciplina')
+@app.route('/disciplina/cadastrar', methods=['POST'])
+def cadastrar_disciplina():
+    nome = request.form['nome']
+    ementa = request.form['ementa']
+
+    disciplina_service.salvar(nome, ementa)
+
+    return redirect('/')
+
 
 @app.route("/disciplina/remover/<int:id>")
 def remover_disciplina(id):
