@@ -3,13 +3,16 @@ from aluno_service import AlunoService
 from professor_service import ProfessorService
 from curso_service import CursoService
 from disciplina_service import DisciplinaService
+ementa = request.form['ementa']
+
 
 app = Flask(__name__)
 
 aluno_service = AlunoService()
 professor_service = ProfessorService()
 curso_service = CursoService()
-Disciplina_service = disciplina_service()
+disciplina_service = DisciplinaService()
+
 
 @app.route('/')
 def index():
@@ -130,7 +133,7 @@ def remover_curso(id):
 
 @app.route('/disciplina')
 def listar_disciplina():
-    lista = Disciplina_service.listar()
+    lista = disciplina_service.listar()
     return render_template('disciplina/listar.html', lista=lista)
 
 @app.route('/disciplina/form')
@@ -147,7 +150,7 @@ def salvar_disciplina():
 
 @app.route("/disciplina/editar/<int:id>")
 def editar_disciplina(id):
-    Disciplina_service.editar(id)
+    disciplina_service.editar(id)
     return redirect("/disciplina")
 
 @app.route("/disciplina/salvar/<int:id>", methods=["POST"])
@@ -159,7 +162,7 @@ def atualizar_disciplina(id):
 
 @app.route("/disciplina/remover/<int:id>")
 def remover_disciplina(id):
-    Disciplina_service.remover(id)
+    disciplina_service.remover(id)
     return render_template("/disciplina")
 
 if __name__ == '__main__':
