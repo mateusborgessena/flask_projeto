@@ -3,6 +3,9 @@ from aluno_service import AlunoService
 from professor_service import ProfessorService
 from curso_service import CursoService
 from disciplina_service import DisciplinaService
+from flask import redirect
+
+
 
 
 
