@@ -159,7 +159,7 @@ def atualizar_disciplina(id):
 
 @app.route("/disciplina/remover/<int:id>")
 def remover_disciplina(id):
-    disciplina_service.remover(id)
+    Disciplina_service.remover(id)
     return render_template("/disciplina")
 
 if __name__ == '__main__':
