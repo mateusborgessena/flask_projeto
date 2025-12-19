@@ -99,7 +99,7 @@ def remover_professor(id):
     return redirect("/professor")
 
 @app.route('/curso')
-def listar_curso():
+def listar_cursos():
     lista = curso_service.listar()
     return render_template('curso/listar.html', lista=lista)
 
