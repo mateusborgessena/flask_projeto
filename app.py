@@ -3,7 +3,7 @@ from aluno_service import AlunoService
 from professor_service import ProfessorService
 from curso_service import CursoService
 from disciplina_service import DisciplinaService
-from flask import redirect
+
 
 
 
@@ -104,7 +104,7 @@ def remover_professor(id):
 @app.route('/curso')
 def listar_cursos():
     lista = curso_service.listar()
-    return render_template('curso.html', cursos=cursos)
+    return render_template('curso.html', lista=lista)
 
 @app.route('/curso/form')
 def novo_curso():

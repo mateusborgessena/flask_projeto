@@ -12,7 +12,7 @@ class DisciplinaService:
 
     def adicionar(self, nome, carga_horaria, ementa):
         id = self.proximo_id
-        nova_disciplina = Professor(id, nome, carga_horaria, ementa)
+        nova_disciplina = Disciplina(id, nome, carga_horaria, ementa)
         self.lista.append(nova_disciplina)
         self.proximo_id += 1
 
