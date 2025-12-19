@@ -130,7 +130,7 @@ def remover_curso(id):
 
 @app.route('/disciplina')
 def listar_disciplina():
-    lista = disciplina_service.listar()
+    lista = Disciplina_service.listar()
     return render_template('disciplina/listar.html', lista=lista)
 
 @app.route('/disciplina/form')
