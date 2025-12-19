@@ -147,7 +147,7 @@ def salvar_disciplina():
 
 @app.route("/disciplina/editar/<int:id>")
 def editar_disciplina(id):
-    Disciplina.editar(id)
+    Disciplina_service.editar(id)
     return redirect("/disciplina")
 
 @app.route("/disciplina/salvar/<int:id>", methods=["POST"])
