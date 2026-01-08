@@ -1,8 +1,8 @@
 from flask import Flask, render_template, request, redirect
-from aluno_service import AlunoService
-from professor_service import ProfessorService
-from curso_service import CursoService
-from disciplina_service import DisciplinaService
+from aluno_service import AlunoService, Aluno
+from professor_service import ProfessorService, Professor
+from curso_service import CursoService, Curso
+from disciplina_service import DisciplinaService, Disciplina
 
 
 
@@ -49,7 +49,7 @@ def salvar_aluno():
     try:
         aluno_service.adicionar(nome, matricula)
     except  Exception as e:
-        aluno = aluno('',nome,matricula)
+        aluno = Aluno('',nome,matricula)
         return render_template("aluno/form.html",aluno=aluno, erro=str(e))
     
     return redirect('/aluno')
@@ -80,13 +80,15 @@ def listar_professor():
 def novo_professor():
     return render_template("professor/form.html", professor=None)
 
-@app.route("/professor/salvar/", methods=["POST"])
-def salvar_professor():
+@app.route("/aluno/salvar/", methods=["POST"])
+def salvar_aluno():
     nome = request.form.get("nome")
-    cpf = request.form.get("cpf")
-    disciplina = request.form.get("disciplina")
-    professor_service.adicionar(nome, cpf, disciplina)
-    return redirect('/professor')
+    matricula = request.form.get("matricula")
+    try:
+        aluno_service.adicionar(nome, matricula)
+    except  Exception as e:
+        professor = Professor('',nome,matricula)
+        return render_template("aluno/form.html",aluno=aluno, erro=str(e))
 
 @app.route("/professor/editar/<int:id>")
 def editar_professor(id):
@@ -115,12 +117,15 @@ def listar_cursos():
 def novo_curso():
     return render_template("curso/form.html", curso=None)
 
-@app.route("/curso/salvar/", methods=["POST"])
-def salvar_curso():
-    nivel = request.form.get("nivel")
-    curso = request.form.get("curso")
-    curso_service.adicionar(curso, nivel)
-    return redirect('/curso')
+@app.route("/aluno/salvar/", methods=["POST"])
+def salvar_aluno():
+    nome = request.form.get("nome")
+    matricula = request.form.get("matricula")
+    try:
+        aluno_service.adicionar(nome, matricula)
+    except  Exception as e:
+        curso = Curso('',nome,matricula)
+        return render_template("aluno/form.html",aluno=aluno, erro=str(e))
 
 @app.route("/curso/editar/<int:id>")
 def editar_curso(id):
@@ -148,13 +153,15 @@ def listar_disciplina():
 def nova_disciplina():
     return render_template("disciplina/form.html", disciplina=None)
 
-@app.route("/disciplina/salvar/", methods=["POST"])
-def salvar_disciplina():
+@app.route("/aluno/salvar/", methods=["POST"])
+def salvar_aluno():
     nome = request.form.get("nome")
-    carga_horaria = request.form.get("carga_horaria")
-    ementa = request.form.get("ementa")
-    curso_service.adicionar(nome,carga_horaria, ementa)
-    return redirect('/disciplina')
+    matricula = request.form.get("matricula")
+    try:
+        aluno_service.adicionar(nome, matricula)
+    except  Exception as e:
+        disciplina = Disciplina('',nome,matricula)
+        return render_template("aluno/form.html",aluno=aluno, erro=str(e)))
 
 @app.route("/disciplina/editar/<int:id>")
 def editar_disciplina(id):
