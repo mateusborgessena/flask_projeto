@@ -45,8 +45,6 @@
     </style>
 </head>
 <body>
-
-    <!-- Sidebar -->
     <nav class="sidebar">
         <a class="navbar-brand text-center fw-bold d-block mb-4 text-white" href="#">Sistema Escolar</a>
         <a href="/inicio">🏠 Início</a>
@@ -57,9 +55,8 @@
         <a href="/curso">Curso</a>     
     </nav>
 
-    <!-- Main content -->
     <div class="main">
-
+    
     {% if erro %}
         <div class="alert alert-danger">{{ erro }}</div>
-    {% endif %}
+    {% endif %}   
