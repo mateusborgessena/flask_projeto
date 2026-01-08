@@ -51,8 +51,8 @@ def salvar_aluno():
     except  Exception as e:
         aluno = aluno('',nome,matricula)
         return render_template("aluno/form.html",aluno=aluno, erro=str(e))
+    
     return redirect('/aluno')
-
 
 @app.route("/aluno/editar/<int:id>")
 def editar_aluno(id):
