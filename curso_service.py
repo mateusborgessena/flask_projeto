@@ -13,10 +13,15 @@ class CursoService:
         self.adicionar("Saneamento", "Medio")
         self.adicionar("Vestuario", "Medio")
 
-    def adicionar(self, curso, nivel):
+    def adicionar(self, nome, nivel):
+        if not nome or not nivel:
+            raise Exception("Nome e nivel são obrigatórios")
+        for curso in self.lista:
+            if curso.nome == nome:
+                raise Exception("NOME já existe")
         id = self.proximo_id
-        novo_curso = Curso(id, nivel, curso)
-        self.lista.append(novo_curso)
+        curso = Curso(id, nome, nivel)
+        self.lista.append(curso)
         self.proximo_id += 1
 
     def listar(self):

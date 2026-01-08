@@ -11,10 +11,16 @@ class AlunoService:
         self.proximo_id = 1
 
     def adicionar(self, nome, matricula):
+        if not nome or not matricula:
+            raise Exception("Nome e matrícula são obrigatórios")
+        for aluno in self.lista:
+            if aluno.matricula == matricula:
+                raise Exception("Matrícula já existe")
         id = self.proximo_id
-        novo_aluno = Aluno(id, nome, matricula)
-        self.lista.append(novo_aluno)
+        aluno = Aluno(id, nome, matricula)
+        self.lista.append(aluno)
         self.proximo_id += 1
+
 
     def listar(self):
         return self.lista
