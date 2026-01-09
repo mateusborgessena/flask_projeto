@@ -80,7 +80,7 @@ def listar_professor():
 def novo_professor():
     return render_template("professor/form.html", professor=None)
 
-@app.route("/professor/salvar/{{professor.id}}", methods=["POST"])
+@app.route("/professor/salvar/", methods=["POST"])
 def salvar_professor():
     nome = request.form.get("nome")
     disciplina = request.form.get("disciplina")
@@ -96,7 +96,7 @@ def editar_professor(id):
     professor_service.editar(id)
     return redirect("/professor")
 
-@app.route("/professor/salvar/{{professor.id}}<int:id>", methods=["POST"])
+@app.route("/professor/salvar/<int:id>", methods=["POST"])
 def atualizar_professor(id):
     nome = request.form["nome"]
     cpf = request.form["cpf"]
