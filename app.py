@@ -56,7 +56,7 @@ def salvar_aluno():
 
 @app.route("/aluno/editar/<int:id>")
 def editar_aluno(id):
-    aluno = aluno_service.editar(id)
+    aluno = aluno_service.buscar_por_id(id)
     return render_template("aluno/form.html", aluno=aluno)
 
 @app.route("/aluno/salvar/<int:id>", methods=["POST"])
@@ -93,8 +93,8 @@ def salvar_professor():
 
 @app.route("/professor/editar/<int:id>")
 def editar_professor(id):
-    professor_service.editar(id)
-    return redirect("/professor")
+    professor = professor_service.buscar_por_id(id)
+    return render_template("/professor/form.html",professor=professor,)
 
 @app.route("/professor/salvar/<int:id>", methods=["POST"])
 def atualizar_professor(id):
@@ -130,8 +130,8 @@ def salvar_curso():
 
 @app.route("/curso/editar/<int:id>")
 def editar_curso(id):
-    curso_service.editar(id)
-    return redirect("/curso")
+    curso = curso_service.buscar_por_id(id)
+    return render_template("/curso/form.html", curso=curso)
 
 @app.route("/curso/salvar/<int:id>", methods=["POST"])
 def atualizar_curso(id):
@@ -167,7 +167,7 @@ def salvar_disciplina():
 
 @app.route("/disciplina/editar/<int:id>")
 def editar_disciplina(id):
-    disciplina_service.editar(id)
+    disciplina_service.buscar_por_id(id)
     return redirect("/disciplina")
 
 @app.route("/disciplina/remover/<int:id>")
