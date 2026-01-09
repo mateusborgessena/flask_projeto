@@ -163,7 +163,7 @@ def salvar_disciplina():
         disciplina_service.adicionar(nome, carga_horaria,ementa )
     except  Exception as e:
         disciplina = Disciplina('',nome,carga_horaria, ementa)
-        return render_template("disciplina/form.html",disciplina=disciplina, erro=str(e)))
+        return render_template("disciplina/form.html",disciplina=disciplina, erro=str(e))
 
 @app.route("/disciplina/editar/<int:id>")
 def editar_disciplina(id):
