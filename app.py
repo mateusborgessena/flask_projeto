@@ -80,15 +80,16 @@ def listar_professor():
 def novo_professor():
     return render_template("professor/form.html", professor=None)
 
-@app.route("/aluno/salvar/", methods=["POST"])
-def salvar_aluno():
+@app.route("/professor/salvar/", methods=["POST"])
+def salvar_professor():
     nome = request.form.get("nome")
-    matricula = request.form.get("matricula")
+    disciplina = request.form.get("disciplina")
+    cpf = request.form.get("cpf")
     try:
-        aluno_service.adicionar(nome, matricula)
+        professor_service.adicionar(nome, cpf, disciplina)
     except  Exception as e:
-        professor = Professor('',nome,matricula)
-        return render_template("aluno/form.html",aluno=aluno, erro=str(e))
+        professor = Professor('',nome,cpf, disciplina)
+        return render_template("professor/form.html",professor=professor, erro=str(e))
 
 @app.route("/professor/editar/<int:id>")
 def editar_professor(id):
@@ -117,15 +118,15 @@ def listar_cursos():
 def novo_curso():
     return render_template("curso/form.html", curso=None)
 
-@app.route("/aluno/salvar/", methods=["POST"])
-def salvar_aluno():
+@app.route("/curso/salvar/", methods=["POST"])
+def salvar_curso():
     nome = request.form.get("nome")
-    matricula = request.form.get("matricula")
+    nivel = request.form.get("nivel")
     try:
-        aluno_service.adicionar(nome, matricula)
+        curso_service.adicionar(nome, nivel)
     except  Exception as e:
-        curso = Curso('',nome,matricula)
-        return render_template("aluno/form.html",aluno=aluno, erro=str(e))
+        curso = Curso('',nome,nivel)
+        return render_template("curso/form.html",curso=curso, erro=str(e))
 
 @app.route("/curso/editar/<int:id>")
 def editar_curso(id):
@@ -153,15 +154,16 @@ def listar_disciplina():
 def nova_disciplina():
     return render_template("disciplina/form.html", disciplina=None)
 
-@app.route("/aluno/salvar/", methods=["POST"])
-def salvar_aluno():
+@app.route("/disciplina/salvar/", methods=["POST"])
+def salvar_disciplina():
     nome = request.form.get("nome")
-    matricula = request.form.get("matricula")
+    carga_horaria = request.form.get("carga_horaria")
+    ementa = request.form.get("ementa")
     try:
-        aluno_service.adicionar(nome, matricula)
+        disciplina_service.adicionar(nome, carga_horaria,ementa )
     except  Exception as e:
-        disciplina = Disciplina('',nome,matricula)
-        return render_template("aluno/form.html",aluno=aluno, erro=str(e)))
+        disciplina = Disciplina('',nome,carga_horaria, ementa)
+        return render_template("disciplina/form.html",disciplina=disciplina, erro=str(e)))
 
 @app.route("/disciplina/editar/<int:id>")
 def editar_disciplina(id):

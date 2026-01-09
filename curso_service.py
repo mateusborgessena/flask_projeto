@@ -9,10 +9,6 @@ class CursoService:
         self.lista = []
         self.proximo_id = 1
 
-        self.adicionar("Informatica", "Superior")
-        self.adicionar("Saneamento", "Medio")
-        self.adicionar("Vestuario", "Medio")
-
     def adicionar(self, nome, nivel):
         if not nome or not nivel:
             raise Exception("Nome e nivel são obrigatórios")

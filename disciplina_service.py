@@ -10,14 +10,14 @@ class DisciplinaService:
         self.lista = []
         self.proximo_id = 1
 
-    def adicionar(self, nome, carga_horaria):
+    def adicionar(self, nome, carga_horaria, ementa):
         if not nome or not carga_horaria:
             raise Exception("Nome e carga_horaria são obrigatórios")
         for disciplina in self.lista:
             if disciplina.nome == nome:
                 raise Exception("NOME já existe")
         id = self.proximo_id
-        disciplina = Disciplina(id, nome, disciplina)
+        disciplina = Disciplina(id, nome,carga_horaria,ementa  )
         self.lista.append(disciplina)
         self.proximo_id += 1
 
