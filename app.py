@@ -90,6 +90,7 @@ def salvar_professor():
     except  Exception as e:
         professor = Professor('',nome,cpf, disciplina)
         return render_template("professor/form.html",professor=professor, erro=str(e))
+    return redirect('/professor')
 
 @app.route("/professor/editar/<int:id>")
 def editar_professor(id):
