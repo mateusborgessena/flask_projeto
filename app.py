@@ -42,7 +42,7 @@ def listar_aluno():
 def novo_aluno():
     return render_template("aluno/form.html", aluno=None)
 
-@app.route("/aluno/salvar/", methods=["POST"])
+@app.route("/aluno/salvar/{{aluno.id}}", methods=["POST"])
 def salvar_aluno():
     nome = request.form.get("nome")
     matricula = request.form.get("matricula")
@@ -80,7 +80,7 @@ def listar_professor():
 def novo_professor():
     return render_template("professor/form.html", professor=None)
 
-@app.route("/professor/salvar/", methods=["POST"])
+@app.route("/professor/salvar/{{professor.id}}", methods=["POST"])
 def salvar_professor():
     nome = request.form.get("nome")
     disciplina = request.form.get("disciplina")
@@ -118,7 +118,7 @@ def listar_cursos():
 def novo_curso():
     return render_template("curso/form.html", curso=None)
 
-@app.route("/curso/salvar/", methods=["POST"])
+@app.route("/curso/salvar/{{curso.id}}", methods=["POST"])
 def salvar_curso():
     nome = request.form.get("nome")
     nivel = request.form.get("nivel")
