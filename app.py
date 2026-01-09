@@ -94,7 +94,7 @@ def salvar_professor():
 @app.route("/professor/editar/<int:id>")
 def editar_professor(id):
     professor = professor_service.buscar_por_id(id)
-    return render_template("/professor/form.html",professor=professor,)
+    return render_template("/professor/form.html",professor=professor)
 
 @app.route("/professor/salvar/<int:id>", methods=["POST"])
 def atualizar_professor(id):
