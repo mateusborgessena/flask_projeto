@@ -91,12 +91,12 @@ def salvar_professor():
         professor = Professor('',nome,cpf, disciplina)
         return render_template("professor/form.html",professor=professor, erro=str(e))
 
-@app.route("/professor/editar/{{professor.id}}/<int:id>")
+@app.route("/professor/editar/<int:id>")
 def editar_professor(id):
     professor_service.editar(id)
     return redirect("/professor")
 
-@app.route("/professor/salvar/<int:id>", methods=["POST"])
+@app.route("/professor/salvar/{{professor.id}}/<int:id>", methods=["POST"])
 def atualizar_professor(id):
     nome = request.form["nome"]
     cpf = request.form["cpf"]
