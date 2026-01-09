@@ -31,7 +31,7 @@ class AlunoService:
                 return aluno    
         return None 
     
-    def editar (self, id, nome, matricula):
+    def atualizar (self, id, nome, matricula):
         aluno = self.buscar_por_id(id)
         if aluno:
             aluno.nome = nome
