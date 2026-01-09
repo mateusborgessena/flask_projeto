@@ -56,8 +56,8 @@ def salvar_aluno():
 
 @app.route("/aluno/editar/<int:id>")
 def editar_aluno(id):
-    aluno_service.editar(id)
-    return redirect("/aluno")
+    aluno = aluno_service.editar(id)
+    return render_template("aluno/form.html", aluno=aluno)
 
 @app.route("/aluno/salvar/<int:id>", methods=["POST"])
 def atualizar_aluno(id):
