@@ -101,7 +101,7 @@ def atualizar_professor(id):
     nome = request.form["nome"]
     cpf = request.form["cpf"]
     disciplina = request.form["disciplina"]
-    aluno_service.atualizar(id, nome, cpf, disciplina)
+    professor_service.atualizar(id, nome, cpf, disciplina)
     return redirect('/professor')
 
 @app.route("/professor/remover/<int:id>")
@@ -118,7 +118,7 @@ def listar_cursos():
 def novo_curso():
     return render_template("curso/form.html", curso=None)
 
-@app.route("/curso/salvar/{{curso.id}}", methods=["POST"])
+@app.route("/curso/salvar/", methods=["POST"])
 def salvar_curso():
     nome = request.form.get("nome")
     nivel = request.form.get("nivel")
@@ -169,16 +169,6 @@ def salvar_disciplina():
 def editar_disciplina(id):
     disciplina_service.editar(id)
     return redirect("/disciplina")
-
-@app.route('/disciplina/cadastrar', methods=['POST'])
-def cadastrar_disciplina():
-    nome = request.form['nome']
-    ementa = request.form['ementa']
-
-    disciplina_service.salvar(nome, ementa)
-
-    return redirect('/')
-
 
 @app.route("/disciplina/remover/<int:id>")
 def remover_disciplina(id):
