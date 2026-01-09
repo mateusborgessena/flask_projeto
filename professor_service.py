@@ -10,14 +10,14 @@ class ProfessorService:
         self.lista = []
         self.proximo_id = 1
 
-    def adicionar(self, nome, cpf):
+    def adicionar(self, nome, cpf, disciplina):
         if not nome or not cpf:
             raise Exception("Nome e matrícula são obrigatórios")
         for aluno in self.lista:
             if aluno.cpf == cpf:
                 raise Exception("CPF já existe")
         id = self.proximo_id
-        professor = Professor(id, nome, cpf,)
+        professor = Professor(id, nome, cpf,disciplina)
         self.lista.append(professor)
         self.proximo_id += 1
 
