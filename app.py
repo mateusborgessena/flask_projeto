@@ -96,7 +96,7 @@ def editar_professor(id):
     professor_service.editar(id)
     return redirect("/professor")
 
-@app.route("/professor/salvar/{{professor.id}}/<int:id>", methods=["POST"])
+@app.route("/professor/salvar/{{professor.id}}<int:id>", methods=["POST"])
 def atualizar_professor(id):
     nome = request.form["nome"]
     cpf = request.form["cpf"]
