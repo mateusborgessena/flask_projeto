@@ -42,7 +42,7 @@ def listar_aluno():
 def novo_aluno():
     return render_template("aluno/form.html", aluno=None)
 
-@app.route("/aluno/salvar/{{aluno.id}}", methods=["POST"])
+@app.route("/aluno/salvar/", methods=["POST"])
 def salvar_aluno():
     nome = request.form.get("nome")
     matricula = request.form.get("matricula")
