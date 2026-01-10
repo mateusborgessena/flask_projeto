@@ -93,18 +93,18 @@ def salvar_professor():
    
     return redirect('/professor')
 
-@app.route("/professor/editar/<int:id>",)
+@app.route("/professor/editar/<int:id>")
 def editar_professor(id):
+    professor = professor_service.buscar_por_id(id)
     nome = request.form.get("nome")
     cpf = request.form.get("cpf")
     disciplina = request.form.get("disciplina")
     try:
-        professor_service.buscar_por_id(nome, cpf, disciplina)
-    except Exception as e:
-        professor = Professor('', nome, cpf, disciplina)
-        return render_template("professor/form.html",professor=professor,erro=str(e))
+        professor_service.adicionar(nome, cpf, disciplina)
+    except  Exception as e:
+        professor = Professor('',nome,cpf, disciplina)
+        return render_template("professor/form.html",professor=professor, erro=str(e)) 
     return redirect('/professor')
-    
 
 @app.route("/professor/salvar/<int:id>", methods=["POST"])
 def atualizar_professor(id):
