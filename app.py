@@ -93,7 +93,7 @@ def salvar_professor():
    
     return redirect('/professor')
 
-@app.route("/professor/editar/<int:id>")
+@app.route("/professor/editar/<int:id>", methods=["POST"])
 def editar_professor(id):
     nome = request.form.get("nome")
     cpf = request.form.get("cpf")
