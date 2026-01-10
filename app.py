@@ -103,7 +103,12 @@ def atualizar_professor(id):
     nome = request.form["nome"]
     cpf = request.form["cpf"]
     disciplina = request.form["disciplina"]
-    professor_service.atualizar(id, nome, cpf, disciplina)
+    
+    try:
+        professor_service.atualizar(id, nome, cpf, disciplina)
+    except  Exception as e:
+        professor = Professor(id, nome, cpf, disciplina)
+        return render_template("curso/form.html",professor=professor, erro=str(e))    
     return redirect('/professor')
 
 @app.route("/professor/remover/<int:id>")
