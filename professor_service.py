@@ -34,8 +34,6 @@ class ProfessorService:
         professor = self.buscar_por_id(id)
         if not professor:
             raise Exception("Professor não encontrado")
-        if not professor:
-            raise Exception("Professor não encontrado")
         if professor:
             for p in self.lista:
                 if p.cpf == cpf and p.id != id:
