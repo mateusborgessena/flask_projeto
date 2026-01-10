@@ -31,9 +31,11 @@ class CursoService:
     
     def atualizar (self, id, nome, nivel):
         curso = self.buscar_por_id(id)
-        if curso:
-            curso.nome = nome
-            curso.nivel = nivel
+        if not curso:
+            raise Exception("Curso não encontrado")
+
+        curso.nome = nome
+        curso.nivel = nivel
 
     def remover (self, id):
         for curso in self.lista:
