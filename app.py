@@ -122,12 +122,12 @@ def novo_curso():
 
 @app.route("/curso/salvar/", methods=["POST"])
 def salvar_curso():
-    curso = request.form.get("curso")
+    nome = request.form.get("nome")
     nivel = request.form.get("nivel")
     try:
-        curso_service.adicionar(curso, nivel)
+        curso_service.adicionar(nome, nivel)
     except  Exception as e:
-        curso = Curso('',curso,nivel)
+        curso = Curso('',nome,nivel)
         return render_template("curso/form.html",curso=curso, erro=str(e))
     return redirect("/curso")
 
@@ -139,8 +139,8 @@ def editar_curso(id):
 @app.route("/curso/salvar/<int:id>", methods=["POST"])
 def atualizar_curso(id):
     nivel = request.form["nivel"]
-    curso = request.form["curso"]
-    curso_service.atualizar(id, nivel, curso)
+    nome = request.form["nome"]
+    curso_service.atualizar(id, nivel, nome)
     return redirect('/curso')
 
 @app.route("/curso/remover/<int:id>")

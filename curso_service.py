@@ -1,7 +1,7 @@
 class  Curso:
-    def __init__(self, id, curso, nivel):
+    def __init__(self, id, nome, nivel):
         self.id = id
-        self.curso = curso
+        self.nome = nome
         self.nivel = nivel
 
 class CursoService:
@@ -9,14 +9,14 @@ class CursoService:
         self.lista = []
         self.proximo_id = 1
 
-    def adicionar(self, curso, nivel):
-        if not curso or not nivel:
-            raise Exception("Curso e nivel são obrigatórios")
+    def adicionar(self, nome, nivel):
+        if not nome or not nivel:
+            raise Exception("Nome e nivel são obrigatórios")
         for curso in self.lista:
-            if curso.curso == curso:
-                raise Exception("Curso já existe")
+            if curso.nome == nome:
+                raise Exception("nome já existe")
         id = self.proximo_id
-        curso = Curso(id, curso, nivel)
+        curso = Curso(id, nome, nivel)
         self.lista.append(curso)
         self.proximo_id += 1
 
@@ -29,11 +29,11 @@ class CursoService:
                 return curso    
         return None 
     
-    def atualizar (self, id, curso, nivel):
+    def atualizar (self, id, nome, nivel):
         curso = self.buscar_por_id(id)
         if curso:
-            curso.curso = curso
-            curso.matricula = nivel
+            curso.nome = nome
+            curso.nivel = nivel
 
     def remover (self, id):
         for curso in self.lista:
