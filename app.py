@@ -46,9 +46,8 @@ def novo_aluno():
 def salvar_aluno():
     nome = request.form.get("nome")
     matricula = request.form.get("matricula")
-    disciplina = request.form.get("disciplina")
     try:
-        aluno_service.adicionar(nome, matricula)
+        aluno_service.adicionar(nome, matricula,)
     except  Exception as e:
         aluno = Aluno('',nome,matricula)
         return render_template("aluno/form.html",aluno=aluno, erro=str(e))
@@ -85,6 +84,7 @@ def novo_professor():
 def salvar_professor():
     nome = request.form.get("nome")
     cpf = request.form.get("cpf")
+    disciplina = request.form.get("disciplina")
     try:
         professor_service.adicionar(nome, cpf)
     except  Exception as e:
