@@ -133,7 +133,7 @@ def salvar_curso():
 
 @app.route("/curso/editar/<int:id>")
 def editar_curso(id):
-    curso = curso_service.buscar_por_id(id)
+    curso = curso_service.atualizar(id)
     return render_template("/curso/form.html", curso=curso)
 
 @app.route("/curso/salvar/<int:id>", methods=["POST"])
