@@ -33,8 +33,8 @@ class ProfessorService:
     def atualizar (self, id, nome, cpf, disciplina):
         professor = self.buscar_por_id(id)
         if professor:
-            for professor in self.lista:
-                if professor.cpf == cpf and professor.id:
+            for p in self.lista:
+                if p.cpf == cpf and p.id != id:
                     raise Exception("CPF já existe")
 
             professor.nome = nome
