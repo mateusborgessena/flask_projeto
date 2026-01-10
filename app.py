@@ -46,6 +46,7 @@ def novo_aluno():
 def salvar_aluno():
     nome = request.form.get("nome")
     matricula = request.form.get("matricula")
+    disciplina = request.form.get("disciplina")
     try:
         aluno_service.adicionar(nome, matricula)
     except  Exception as e:
