@@ -122,12 +122,12 @@ def novo_curso():
 
 @app.route("/curso/salvar/", methods=["POST"])
 def salvar_curso():
-    nome = request.form.get("nome")
+    curso = request.form.get("curso")
     nivel = request.form.get("nivel")
     try:
-        curso_service.adicionar(nome, nivel)
+        curso_service.adicionar(curso, nivel)
     except  Exception as e:
-        curso = Curso('',nome,nivel)
+        curso = Curso('',curso,nivel)
         return render_template("curso/form.html",curso=curso, erro=str(e))
     return redirect("/curso")
 
