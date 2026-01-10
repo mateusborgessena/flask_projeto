@@ -129,6 +129,7 @@ def salvar_curso():
     except  Exception as e:
         curso = Curso('',nome,nivel)
         return render_template("curso/form.html",curso=curso, erro=str(e))
+    return redirect("/curso")
 
 @app.route("/curso/editar/<int:id>")
 def editar_curso(id):
