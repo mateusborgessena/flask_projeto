@@ -145,6 +145,11 @@ def atualizar_curso(id):
     nivel = request.form["nivel"]
     nome = request.form["nome"]
     curso_service.atualizar(id, nivel, nome)
+    try:
+        curso_service.atualizar(id,nome, nivel)
+    except  Exception as e:
+        curso = Curso(id,nome,nivel)
+        return render_template("curso/form.html",curso=curso, erro=str(e))
     return redirect('/curso')
 
 @app.route("/curso/remover/<int:id>")
