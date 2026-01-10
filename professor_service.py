@@ -32,6 +32,10 @@ class ProfessorService:
     
     def atualizar (self, id, nome, cpf, disciplina):
         professor = self.buscar_por_id(id)
+        if not professor:
+            raise Exception("Professor não encontrado")
+        if not professor:
+            raise Exception("Professor não encontrado")
         if professor:
             for p in self.lista:
                 if p.cpf == cpf and p.id != id:
@@ -40,6 +44,7 @@ class ProfessorService:
             professor.nome = nome
             professor.cpf = cpf
             professor.disciplina = disciplina
+
     def remover (self, id):
         for professor in self.lista:
             if professor.id == id:
