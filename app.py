@@ -80,7 +80,7 @@ def listar_professor():
 def novo_professor():
     return render_template("professor/form.html", professor=None)
 
-@app.route("/professor/salvar", methods=["POST"])
+@app.route("/professor/salvar/", methods=["POST"])
 def salvar_professor():
     nome = request.form.get("nome")
     cpf = request.form.get("cpf")
