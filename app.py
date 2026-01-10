@@ -83,13 +83,13 @@ def novo_professor():
 @app.route("/professor/salvar", methods=["POST"])
 def salvar_professor():
     nome = request.form.get("nome")
-    disciplina = request.form.get("disciplina")
     cpf = request.form.get("cpf")
     try:
-        professor_service.adicionar(nome, cpf, disciplina)
+        professor_service.adicionar(nome, cpf)
     except  Exception as e:
-        professor = Professor('',nome,cpf, disciplina)
+        professor = Professor('',nome,cpf)
         return render_template("professor/form.html",professor=professor, erro=str(e))
+   
     return redirect('/professor')
 
 @app.route("/professor/editar/<int:id>")
