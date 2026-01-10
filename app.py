@@ -100,7 +100,7 @@ def editar_professor(id):
     cpf = request.form.get("cpf")
     disciplina = request.form.get("disciplina")
     try:
-        professor_service.adicionar(nome, cpf, disciplina)
+        professor_service.atualizar(nome, cpf, disciplina)
     except  Exception as e:
         professor = Professor('',nome,cpf, disciplina)
         return render_template("professor/form.html",professor=professor, erro=str(e)) 
