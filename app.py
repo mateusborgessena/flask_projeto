@@ -36,6 +36,7 @@ def inicio():
 
 ############### ALUNO ##########################################################
 
+
 @app.route('/aluno')
 def listar_aluno():
     lista = aluno_service.listar()
@@ -75,11 +76,10 @@ def remover_aluno(id):
     return redirect("/aluno")
 
 
-############### ALUNO ##########################################################
-
-
 
 ############### PROFESSOR ##########################################################´
+
+
 
 @app.route('/professor')
 def listar_professor():
@@ -125,9 +125,12 @@ def remover_professor(id):
     professor_service.remover(id)
     return redirect("/professor")
 
-############### PROFESSOR ##########################################################
+
+
+
 
 ############### CURSO ##########################################################
+
 
 @app.route('/curso')
 def listar_cursos():
@@ -171,7 +174,8 @@ def remover_curso(id):
     curso_service.remover(id)
     return redirect ("/curso")
 
-############### CURSO ##########################################################
+
+
 
 ############### DISCIPLINA ##########################################################
 
@@ -219,7 +223,6 @@ def remover_disciplina(id):
     disciplina_service.remover(id)
     return render_template("/disciplina")
 
-############### DISCIPLINA ##########################################################
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=80,debug=True)
