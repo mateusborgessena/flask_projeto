@@ -31,6 +31,8 @@ class CursoService:
     
     def atualizar (self, id, nome, nivel):
         curso = self.buscar_por_id(id)
+        if not curso:
+            raise Exception("Aluno não encontrado")
         if curso:
             for c in self.lista:
                 if c.nivel == nivel and c.nivel != id:

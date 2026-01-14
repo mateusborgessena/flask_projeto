@@ -33,7 +33,13 @@ class AlunoService:
     
     def atualizar (self, id, nome, matricula):
         aluno = self.buscar_por_id(id)
+        if not aluno:
+            raise Exception("Aluno não encontrado")
         if aluno:
+            for a in self.lista:
+                if a.matricula == matricula and a.matricula != id:
+                    raise Exception("MATRICULA já existe")
+
             aluno.nome = nome
             aluno.matricula = matricula
 

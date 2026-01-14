@@ -32,7 +32,13 @@ class DisciplinaService:
     
     def atualizar (self, id, nome, carga_horaria, ementa):
         disciplina = self.buscar_por_id(id)
+        if not disciplina:
+            raise Exception("NOME não encontrado")
         if disciplina:
+            for d in self.lista:
+                if d.nome == nome and d.id != id:
+                    raise Exception("NOME já existe")
+
             disciplina.nome = nome
             disciplina.carga_horaria = carga_horaria
             disciplina.ementa = ementa

@@ -33,6 +33,9 @@ def contato():
 def inicio():
     return render_template('inicio.html')
 
+
+############### ALUNO ##########################################################
+
 @app.route('/aluno')
 def listar_aluno():
     lista = aluno_service.listar()
@@ -70,6 +73,13 @@ def atualizar_aluno(id):
 def remover_aluno(id):
     aluno_service.remover(id)
     return redirect("/aluno")
+
+
+############### ALUNO ##########################################################
+
+
+
+############### PROFESSOR ##########################################################´
 
 @app.route('/professor')
 def listar_professor():
@@ -115,6 +125,10 @@ def remover_professor(id):
     professor_service.remover(id)
     return redirect("/professor")
 
+############### PROFESSOR ##########################################################
+
+############### CURSO ##########################################################
+
 @app.route('/curso')
 def listar_cursos():
     lista = curso_service.listar()
@@ -157,6 +171,11 @@ def remover_curso(id):
     curso_service.remover(id)
     return redirect ("/curso")
 
+############### CURSO ##########################################################
+
+############### DISCIPLINA ##########################################################
+
+
 @app.route('/disciplina')
 def listar_disciplina():
     lista = disciplina_service.listar()
@@ -172,10 +191,23 @@ def salvar_disciplina():
     carga_horaria = request.form.get("carga_horaria")
     ementa = request.form.get("ementa")
     try:
-        disciplina_service.adicionar(nome, carga_horaria,ementa )
+        disciplina_service.adicionar(nome, carga_horaria, ementa )
     except  Exception as e:
         disciplina = Disciplina('',nome,carga_horaria, ementa)
         return render_template("disciplina/form.html",disciplina=disciplina, erro=str(e))
+    
+@app.route("/disciplina/salvar/<int:id>", methods=["POST"])
+def atualizar_disciplina(id):
+    nome = request.form["nivel"]
+    carga_horaria = request.form["nome"]
+    ementa = request.form.get("ementa")
+    disciplina_service.atualizar(id, nome, carga_horaria, ementa)
+    try:
+        disciplina_service.atualizar(id,nome, ementa, carga_horaria)
+    except  Exception as e:
+        disciplina = Disciplina(id,nome,ementa, carga_horaria)
+        return render_template("disciplina/form.html",disciplina=disciplina, erro=str(e))
+    return redirect('/disciplina')
 
 @app.route("/disciplina/editar/<int:id>")
 def editar_disciplina(id):
@@ -186,6 +218,8 @@ def editar_disciplina(id):
 def remover_disciplina(id):
     disciplina_service.remover(id)
     return render_template("/disciplina")
+
+############### DISCIPLINA ##########################################################
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=80,debug=True)
