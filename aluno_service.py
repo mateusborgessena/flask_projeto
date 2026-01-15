@@ -11,15 +11,12 @@ class AlunoService:
         self.proximo_id = 1
 
     def adicionar(self, nome, matricula):
-        if not nome or not matricula:
-            raise Exception("Nome e matrícula são obrigatórios")
-        for aluno in self.lista:
-            if aluno.matricula == matricula:
-                raise Exception("Matrícula já existe")
+        self._validar_dados(nome, matricula)
         id = self.proximo_id
-        aluno = Aluno(id, nome, matricula)
+        aluno = Aluno( id, nome , matricula)
         self.lista.append(aluno)
-        self.proximo_id += 1
+        self.proximo_id +=1
+
 
 
     def listar(self):
@@ -31,17 +28,21 @@ class AlunoService:
                 return aluno    
         return None 
     
-    def atualizar (self, id, nome, matricula):
+    def atualizar(self,id,nome,matricula):
+        self._validar_dados(nome,matricula,id)
         aluno = self.buscar_por_id(id)
-        if not aluno:
-            raise Exception("Aluno não encontrado")
         if aluno:
-            for a in self.lista:
-                if a.matricula == matricula and a.matricula != id:
-                    raise Exception("MATRICULA já existe")
-
             aluno.nome = nome
             aluno.matricula = matricula
+
+    def _validar_dados(self, nome, matricula, id=None):
+        if not nome or not matricula:
+            raise Exception("Nome e matrícula são obrigatórios")
+        for aluno in self.lista:
+            if aluno.matricula == matricula:
+                if id is None or aluno.id != id:
+                    raise Exception("Matrícula já existe")
+
 
     def remover (self, id):
         for aluno in self.lista:
