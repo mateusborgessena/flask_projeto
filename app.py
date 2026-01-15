@@ -67,7 +67,11 @@ def editar_aluno(id):
 def atualizar_aluno(id):
     nome = request.form["nome"]
     matricula = request.form["matricula"]
-    aluno_service.atualizar(id, nome, matricula)
+    try:
+        aluno_service.atualizar(id, nome, matricula)
+    except Exception as e:
+        aluno = Aluno(id,matricula,nome)
+        return render_template("aluno/form.html", aluno=aluno, erro=str(e))
     return redirect('/aluno')
 
 @app.route("/aluno/remover/<int:id>")
@@ -205,7 +209,6 @@ def atualizar_disciplina(id):
     nome = request.form["nivel"]
     carga_horaria = request.form["nome"]
     ementa = request.form.get("ementa")
-    disciplina_service.atualizar(id, nome, carga_horaria, ementa)
     try:
         disciplina_service.atualizar(id,nome, ementa, carga_horaria)
     except  Exception as e:
