@@ -11,15 +11,11 @@ class DisciplinaService:
         self.proximo_id = 1
 
     def adicionar(self, nome, carga_horaria, ementa):
-        if not nome or not carga_horaria:
-            raise Exception("Nome e carga_horaria são obrigatórios")
-        for disciplina in self.lista:
-            if disciplina.nome == nome:
-                raise Exception("NOME já existe")
+        self._validar_dados(nome, ementa,carga_horaria)
         id = self.proximo_id
-        disciplina = Disciplina(id, nome,carga_horaria,ementa  )
+        disciplina = Disciplina( id, nome , ementa, carga_horaria)
         self.lista.append(disciplina)
-        self.proximo_id += 1
+        self.proximo_id +=1
 
     def listar(self):
         return self.lista
@@ -30,18 +26,21 @@ class DisciplinaService:
                 return disciplina    
         return None 
     
-    def atualizar (self, id, nome, carga_horaria, ementa):
+    def atualizar(self,id,nome,ementa,carga_horaria ):
+        self._validar_dados(nome, ementa, carga_horaria, id)
         disciplina = self.buscar_por_id(id)
-        if not disciplina:
-            raise Exception("NOME não encontrado")
         if disciplina:
-            for d in self.lista:
-                if d.nome == nome and d.id != id:
-                    raise Exception("NOME já existe")
-
             disciplina.nome = nome
-            disciplina.carga_horaria = carga_horaria
             disciplina.ementa = ementa
+            disciplina.carga_horaria = carga_horaria
+
+    def _validar_dados(self, nome, carga_horaria, id=None):
+        if not nome or not carga_horaria:
+            raise Exception("Nome e carga_horaria são obrigatórios")
+        for disciplina in self.lista:
+            if disciplina.nome == nome:
+                if id is None or disciplina.id != id:
+                    raise Exception("Nome já existe")
 
     def remover (self, id):
         for professor in self.lista:

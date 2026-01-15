@@ -10,16 +10,12 @@ class CursoService:
         self.proximo_id = 1
 
     def adicionar(self, nome, nivel):
-        if not nome or not nivel:
-            raise Exception("Nome e nivel são obrigatórios")
-        for curso in self.lista:
-            if curso.nome == nome:
-                raise Exception("nome já existe")
+        self._validar_dados(nome, nivel)
         id = self.proximo_id
-        curso = Curso(id, nome, nivel)
+        curso = Curso( id, nome , nivel)
         self.lista.append(curso)
-        self.proximo_id += 1
-
+        self.proximo_id +=1
+        
     def listar(self):
         return self.lista
     
@@ -29,17 +25,20 @@ class CursoService:
                 return curso    
         return None 
     
-    def atualizar (self, id, nome, nivel):
+    def atualizar(self,id,nome,nivel):
+        self._validar_dados(nome,nivel,id)
         curso = self.buscar_por_id(id)
-        if not curso:
-            raise Exception("Aluno não encontrado")
         if curso:
-            for c in self.lista:
-                if c.nivel == nivel and c.nivel != id:
-                    raise Exception("Curso já existe")
-
             curso.nome = nome
             curso.nivel = nivel
+    
+    def _validar_dados(self, nome, nivel, id=None):
+        if not nome or not nivel:
+            raise Exception("Nome e matrícula são obrigatórios")
+        for curso in self.lista:
+            if curso.nome == nome:
+                if id is None or curso.id != id:
+                    raise Exception("Nome já existe")
 
     def remover (self, id):
         for curso in self.lista:

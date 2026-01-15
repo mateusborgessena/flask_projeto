@@ -11,15 +11,11 @@ class ProfessorService:
         self.proximo_id = 1
 
     def adicionar(self, nome, cpf, disciplina):
-        if not nome or not cpf:
-            raise Exception("Nome e matrícula são obrigatórios")
-        for professor in self.lista:
-            if professor.cpf == cpf:
-                raise Exception("CPF já existe")
+        self._validar_dados(nome, cpf,disciplina)
         id = self.proximo_id
-        professor = Professor(id, nome, cpf,disciplina)
+        professor = Professor( id, nome , cpf, disciplina)
         self.lista.append(professor)
-        self.proximo_id += 1
+        self.proximo_id +=1
 
     def listar(self):
         return self.lista
@@ -29,19 +25,22 @@ class ProfessorService:
             if professor.id == id:   
                 return professor    
         return None 
-    
-    def atualizar (self, id, nome, cpf, disciplina):
-        professor = self.buscar_por_id(id)
-        if not professor:
-            raise Exception("Professor não encontrado")
-        if professor:
-            for p in self.lista:
-                if p.cpf == cpf and p.id != id:
-                    raise Exception("CPF já existe")
 
+    def atualizar(self,id,nome,cpf,disciplina ):
+        self._validar_dados(nome, cpf, disciplina, id)
+        professor = self.buscar_por_id(id)
+        if professor:
             professor.nome = nome
             professor.cpf = cpf
             professor.disciplina = disciplina
+    
+    def _validar_dados(self, nome, cpf, id=None):
+        if not nome or not cpf:
+            raise Exception("Nome e CPF são obrigatórios")
+        for professor in self.lista:
+            if professor.cpf == cpf:
+                if id is None or professor.id != id:
+                    raise Exception("CPF já existe")
 
     def remover (self, id):
         for professor in self.lista:

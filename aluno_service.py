@@ -17,8 +17,6 @@ class AlunoService:
         self.lista.append(aluno)
         self.proximo_id +=1
 
-
-
     def listar(self):
         return self.lista
     
@@ -42,7 +40,6 @@ class AlunoService:
             if aluno.matricula == matricula:
                 if id is None or aluno.id != id:
                     raise Exception("Matrícula já existe")
-
 
     def remover (self, id):
         for aluno in self.lista:
