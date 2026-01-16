@@ -35,9 +35,9 @@ def contato():
 def inicio():
     return render_template('inicio.html')
 
-@app.route('/logout')
+@app.route("/logout")
 def logout():
-    return('/')
+    return("/")
 
 @app.route('/')
 def home():
