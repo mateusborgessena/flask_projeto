@@ -234,6 +234,19 @@ def remover_disciplina(id):
     disciplina_service.remover(id)
     return render_template("/disciplina")
 
+###################### AUTENTICAR ##########################
+
+@app.route("/autenticar", methods=["POST"])
+def autenticar():
+    login = request.form.get("login")
+    senha = request.form.get("senha")
+    try:
+         usuario = usuario_service.autenticar(login, senha)
+    except  Exception as e:
+        return render_template("login.html", erro=str(e))    
+    return render_template("index.html")
+
+
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=80,debug=True)
