@@ -3,6 +3,7 @@ from aluno_service import AlunoService, Aluno
 from professor_service import ProfessorService, Professor
 from curso_service import CursoService, Curso
 from disciplina_service import DisciplinaService, Disciplina
+from usuario_service import UsuarioService, Usuario
 
 
 
@@ -15,6 +16,7 @@ aluno_service = AlunoService()
 professor_service = ProfessorService()
 curso_service = CursoService()
 disciplina_service = DisciplinaService()
+usuario_service = UsuarioService()
 
 
 @app.route('/')
