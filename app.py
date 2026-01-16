@@ -25,7 +25,7 @@ def index():
 
 @app.route('/inicio')
 def inicio():
-    return render_template('inicio.html')
+    return render_template('index.html')
 
 @app.route("/logout")
 def logout():
