@@ -23,14 +23,6 @@ usuario_service = UsuarioService()
 def index():
     return render_template('login.html')
 
-@app.route('/sobre')
-def sobre():
-    return render_template('sobre.html')
-
-@app.route('/contato')
-def contato():
-    return render_template('contato.html')
-
 @app.route('/inicio')
 def inicio():
     return render_template('inicio.html')
