@@ -29,7 +29,7 @@ def inicio():
 
 @app.route("/logout")
 def logout():
-    return("/login.html")
+    return redirect("/login.html")
 
 @app.route('/')
 def home():
