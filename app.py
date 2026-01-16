@@ -35,6 +35,13 @@ def contato():
 def inicio():
     return render_template('inicio.html')
 
+@app.route('/logout')
+def logout():
+    return('/')
+
+@app.route('/')
+def home():
+    return render_template("login.html")
 
 ############### ALUNO ##########################################################
 
