@@ -29,7 +29,7 @@ def inicio():
 
 @app.route("/logout")
 def logout():
-    return("/")
+    return("/login.html")
 
 @app.route('/')
 def home():
@@ -237,7 +237,6 @@ def autenticar():
     except  Exception as e:
         return render_template("login.html", erro=str(e))    
     return render_template("index.html")
-
 
 
 if __name__ == '__main__':
